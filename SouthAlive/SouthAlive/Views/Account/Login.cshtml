@@ -1,0 +1,88 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="container" id="div-login">
+    <div class="row">
+        <ol class="breadcrumb transparent">
+            <li class="breadcrumb-item"><a href="~/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li class="breadcrumb-item active">Login</li>
+        </ol>
+    </div>
+    <div style="height:30px"></div>
+    <div class="row">
+
+        <div class="col-md-3"></div>
+        <!--Form with header-->
+
+        <div class="card col-md-6">
+
+            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+                <div class="card-block">
+
+                    <!--Header-->
+                    <div class="form-header special-color-dark">
+                        <h3><i class="fa fa-lock"></i> Login</h3>
+                    </div>
+
+                    <div asp-validation-summary="All" class="md-form text-danger"></div>
+
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input asp-for="Email" id="form2" class="form-control" />
+                        <label for="form2">Your email</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+
+
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix"></i>
+                        <input asp-for="Password" id="form4" class="form-control" />
+
+                        <label for="form4">Your password</label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn red darken-4">Login</button>
+                    </div>
+
+
+                    <div class="md-form">
+                        <div class="row">
+                            <div class="checkbox">
+                                <input asp-for="RememberMe" />
+                                <span class="grey-text">Remember Me</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options">
+                        <p>Not a member? <a asp-action="Register">Sign Up</a></p>
+                        <p>Forgot <a asp-action="ForgotPassword">Password?</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--/Form with header-->
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

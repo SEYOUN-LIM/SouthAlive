@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "ZeroRubbish";
+}
+@section styles{
+    @*<link rel="Stylesheet" href="@Href("~/Content/MyStyles.css")" />*@
+    <style>
+
+    </style>
+
+}
+
+
+<div class="row">
+    <ol class="breadcrumb transparent">
+        <li class="breadcrumb-item"><a href="~/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li class="breadcrumb-item active">ZeroRubbish</li>
+    </ol>
+</div>
+
+<div class="row flex-center">
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDj0PwhlHJmZzVfA0iHMjqEVdFJW9nA3fg">
+    </script>
+
+    <div class="col-lg-9 col-md-11 z-depth-2 sr-map" id="map" style="height:480px;margin:5px;"></div>
+    <script>
+        var styles = [
+            {
+                "featureType": "administrative",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "lightness": 33
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "color": "#f2e5d4"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#c5dac6"
+                    }
+                ]
+            },
+            {
+                "featureType": "poi.park",
+                "elementType": "labels",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "lightness": 20
+                    }
+                ]
+            },
+            {
+                "featureType": "road",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "lightness": 20
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#c5c6c6"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.arterial",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#e4d7c6"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.local",
+                "elementType": "geometry",
+                "stylers": [
+                    {
+                        "color": "#fbfaf7"
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "color": "#acbcc9"
+                    }
+                ]
+            }
+        ];
+        var Invercargill = new google.maps.LatLng(-46.4, 168.35);
+
+        var mapCanvas = document.getElementById("map");
+        var mapOptions = { center: Invercargill, zoom: 13 };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var avenal3 = new google.maps.LatLng(-46.399322, 168.347339);
+        var avenal4 = new google.maps.LatLng(-46.399307, 168.350869);
+        var avenalSecond = new google.maps.Polyline({
+            path: [avenal3, avenal4],
+            strokeColor: "#0000FF",
+            strokeOpacity: 1,
+            strokeWeight: 8
+        });
+
+        //avenalSecond.addEventListener("click", function(){ alert("Hello World!"); });
+
+
+
+        avenalSecond.setMap(map);
+
+        var marker = new google.maps.Marker({ position: Invercargill });
+
+        // Kelvin Street
+        var Kelvin_a = new google.maps.LatLng(-46.394812, 168.350933);
+        var Kelvin_b = new google.maps.LatLng(-46.405729, 168.350922);
+
+        var kelvin = new google.maps.Polyline({
+            path: [Kelvin_a, Kelvin_b],
+            strokeColor: "#0000FF",
+            strokeOpacity: 1,
+            strokeWeight: 8,
+            name: "Kelvin St"
+        });
+        var SelKelvin = null;
+        kelvin.setMap(map);
+        google.maps.event.addListener(kelvin, 'click', function () {
+            //var infowindow = new google.maps.InfoWindow({ content: "Seyoun Lim" });
+            //infowindow.open(map, kelvin);
+            if (confirm("이 지역을 선택하시겠습니까")) {
+                $('.state').text("Seyoun is cleaning " + kelvin.name);
+
+                SelKelvin = new google.maps.Polyline({
+                    path: [Kelvin_a, Kelvin_b],
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1,
+                    strokeWeight: 8,
+                    name: "Kelvin St"
+                });
+                SelKelvin.setMap(map);
+                google.maps.event.addListener(SelKelvin, 'click', function () {
+                    //var infowindow = new google.maps.InfoWindow({ content: "Seyoun Lim" });
+                    //infowindow.open(map, kelvin);
+                    if (confirm("이 지역을 취소하시겠습니까")) {
+                        $('.state').text("");
+
+                        kelvin = new google.maps.Polyline({
+                            path: [Kelvin_a, Kelvin_b],
+                            strokeColor: "#0000FF",
+                            strokeOpacity: 1,
+                            strokeWeight: 8,
+                            name: "Kelvin St"
+                        });
+                        kelvin.setMap(map);
+                    }
+                });
+            }
+        });
+        map.setOptions({ styles: styles });
+
+
+    //google.maps.event.addListener(map, 'click', function (event) {
+    //    placeMarker(map, event.latLng);
+    //});
+
+    //function placeMarker(map, location) {
+    //    var marker = new google.maps.Marker({
+    //        position: location,
+    //        map: map
+    //    });
+    //    var infowindow = new google.maps.InfoWindow({
+    //        content: 'Latitude: ' + location.lat() +
+    //        '<br>Longitude: ' + location.lng()
+    //    });
+    //    infowindow.open(map, marker);
+    //}
+    </script>
+
+
+    <div class="col-lg-2 col-md-12" style="margin:10px;">
+        <div class="sr-zero-btn1">
+            <button class="btn btn-block teal darken-4 waves-effect z-depth-2" style="margin:3px 3px 3px 3px"><i class="fa fa-plus" aria-hidden="true"></i> More</button>
+        </div>
+        <div class="sr-zero-btn2">
+            <button class="btn btn-block teal darken-4 waves-effect z-depth-2" style="margin:3px 3px 3px 3px"><i class="fa fa-history" aria-hidden="true"></i> Undo</button>
+        </div>
+        <div class="sr-zero-btn3">
+            <button class="btn btn-block teal darken-4 waves-effect z-depth-2" style="margin:3px 3px 3px 3px"><i class="fa fa-remove" aria-hidden="true"></i> Reset</button>
+        </div>
+        <div class="sr-zero-btn4">
+            <button class="btn btn-block red darken-4 waves-effect z-depth-2" style="margin:3px 3px 3px 3px"><i class="fa fa-file" aria-hidden="true"></i> Save</button>
+        </div>
+        <!-- Button trigger modal -->
+        <br />
+        <div class="sr-zero-btn5">
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" style="margin:3px 3px 3px 3px">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> Help
+            </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+
+                        <h4 class="modal-title w-100" id="myModalLabel">How to use</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!--Body-->
+                    <div class="modal-body">
+                        <p>1. Choose Street you want to clean.</p>
+                        <p>2. If you want to clean more street, press continue button</p>
+                        <p>3. If you made a mistake to select street, press the Undo Button.</p>
+                        <p>4. the Reset Button make all your street remove.</p>
+                        <p>5. Most Important! Always end of process press the Save Button.</p>
+                        <br />
+                        <h3 class="text-center">- Thank you -</h3>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- /.Live preview-->
+    </div>
+</div>

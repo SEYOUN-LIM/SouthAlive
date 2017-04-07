@@ -1,0 +1,128 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SouthAlive</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">    
+
+    <link href="~/lib/MDB Free/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/MDB Free/css/mdb.css" rel="stylesheet" />
+        
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        @@media screen and (min-width: 800px) {
+            div > ul > li > a:hover {
+                border-bottom:2px solid white;
+                font-size:1.02em;
+            }
+        }
+    </style>
+    @RenderSection("styles", required: false)
+    
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    
+</head>
+<body class="amber accent-1">
+    <!--Navbar-->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar special-color-dark">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/Home">
+                    <strong>SouthAlive</strong>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ZeroRubbish">ZeroRubbish</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Shop">Shop</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navbar-nav nav-flex-icons">
+
+                        <li class="nav-item">
+                            @await Html.PartialAsync("_LoginPartial")
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--/.Navbar-->
+
+
+
+        <div style="height:70px"></div>
+
+
+        <!--/.Navigation & Intro-->
+
+        <div class="container rgba-white-strong z-depth-2" style="padding:10px;">
+            @RenderBody()
+            <hr />
+        </div>
+        <div>
+            <!--Footer-->
+            <footer class="page-footer special-color-dark center-on-small-only modal-fixed-footer" id="footer">
+
+                <!--Footer Links-->
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <!--First column-->
+                        <div class="col-md-12">
+                            <h5 class="title">Contact Us</h5>
+                            <p>Office:Shop 6, South City Mall. PO Box 7055, South Invercargill</p>
+                            <p>Email: <a href="mailto:southalive.gmail.com">southalive@gmail.com</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <!--/.Footer Links-->
+                <!--Copyright-->
+                <div class="footer-copyright">
+                    <div class="container-fluid">
+                        Copyright &copy; <a href="https://www.SouthAlive.com"> Southalive 2017 </a>
+
+                    </div>
+                </div>
+                <!--/.Copyright-->
+            </footer>
+            <!--/.Footer-->
+        </div>
+
+        <!-- JQuery -->
+        <script src="~/lib/MDB Free/js/jquery-2.2.3.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script src="~/lib/MDB Free/js/tether.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="~/lib/MDB Free/js/bootstrap.js"></script>
+        <!-- MDB core JavaScript -->
+        <script src="~/lib/MDB Free/js/mdb.js"></script>
+        @*Scroll Reveal*@
+        <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
+
+        @*MoJS*@
+        <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
+
+        <script src="~/lib/MDB Free/js/SRPlay.js"></script>
+        <script src="~/lib/MDB Free/js/moPlay.js"></script>
+
+        @*Custom JS*@
+        <script src="~/lib/MDB Free/js/site.js"></script>
+
+        @RenderSection("Scripts", required: false)
+</body>
+
+</html>

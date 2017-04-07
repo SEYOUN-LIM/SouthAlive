@@ -1,0 +1,209 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+@section styles{
+    @*<link rel="Stylesheet" href="@Href("~/Content/MyStyles.css")" />*@
+    <style>
+        .sponser-image {
+            max-height:150px;
+
+        }
+        .sponser {
+            margin-top:50px;
+        }
+    </style>
+
+}
+
+<div class="row">
+    <!-- Page Content -->
+    @*<div id="fb-root"></div>*@
+
+
+    <!-- left body-->
+    <div class="col-lg-8 left_part" role="main">
+
+
+        <!--title bar-->
+        <div>
+            <h2>
+                "A vibrant and diverse community that takes the lead in its own future.."
+                <span>
+                    <a class="btn btn-default" asp-controller="About" asp-action="Index" role="button">Learn more</a>
+                </span>
+            </h2>
+        </div>
+        <!-- end title bar-->
+        
+   <!-- slider -->
+
+       @* <div>
+        <div id="myCarousel" class="carousel slide">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <!-- generate controls for carousel based on how many news are valid to show on home page -->
+                @{
+                    if (Model.News.Count > 0)
+                    {
+                        int counter = 0;
+                        foreach (var news in Model.News)
+                        {
+                            if (news.isShowOnHomePage)
+                            {
+                                if (counter == 0)
+                                {
+                                    <li data-target="#myCarousel" data-slide-to="@counter" class="active"></li>
+                                }
+                                else
+                                {
+                                    <li data-target="#myCarousel" data-slide-to="@counter"></li>
+                                }
+                            }
+
+                            counter++;
+                        }
+                    }
+                }
+            </ol>
+
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                @{
+                    if (Model.News.Count > 0)
+                    {
+                        int counter = 0;
+                        foreach (var news in Model.News)
+                        {
+                            if (news.isShowOnHomePage)
+                            {
+                                if (counter == 0)
+                                {
+                                    <div class="active item">
+                                        <img class="img-center img-responsive news-image" src="~/images/News/@news.ImagePath" alt="" style="width:100%;height:400px" />
+                                        <div class="overlay-news">
+                                            <h2 class="">
+                                                <span>NEWS: <br />@news.NewsTitle</span>
+                                                <br />
+                                                <a asp-controller="News" asp-action="SingleNews" asp-route-param="@news.NewsId" class="btn btn-default btn-sm" style="margin-top:10px" role="button">Read More</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <img class="img-center img-responsive news-image" src="~/images/News/@news.ImagePath" alt="" style="width:100%;height:400px" />
+                                        <div class="overlay-news">
+                                            <h2 class="">
+                                                <span>NEWS: <br />@news.NewsTitle</span>
+                                                <br />
+                                                <a asp-controller="News" asp-action="SingleNews" asp-route-param="@news.NewsId" class="btn btn-default btn-sm" style="margin-top:10px" role="button">Read More</a>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                }
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            </div>
+
+            <!-- Carousel nav -->
+            <a class="carousel-control left-flat" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right-flat" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+    </div>
+    <!-- slider -->*@
+        @*<!-- events bar-->
+        <div class="events col home_block">
+
+            @if (Model.Events.Count > 0)
+            {
+                foreach (var e in Model.Events)
+                {
+                    if (e.IsProved && e.IsPublicEvent)
+                    {
+                        @*<div class="col-xs-6 col-md-4 single_event text-center">
+                                <a class="thumbnail">
+                                    <img class="event_image img-responsive" src="~/images/Events/@e.EventImagePath" alt="placeholder image">
+                                </a>
+                                <div class="after">
+                                    <a asp-controller="Event" asp-action="EventDetail" asp-route-param="@e.EventId">@e.EventName</a>
+                                </div>
+                            </div>*@
+
+                        @*<div class="col text-center single_event">
+                            <div class="hovereffect">
+                                <img class="img-responsive event_image" src="~/images/Events/@e.EventImagePath" alt="">
+                                <div class="overlay">
+                                    <h2>@e.EventName</h2>
+                                    <a class="info" href="#">link here</a>
+                                </div>
+                            </div>
+                        </div>*@
+                    @*}
+                }
+            }*@
+        </div> <!-- end events -->
+         <!-- end left body-->
+
+    <div class="col-lg-4 signup-buttons">
+        <div class="col-lg-11 extra-buttons">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <button class="btn btn-default btn-lg  btn-block" disabled>Become a volunteer</button>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-default btn-lg btn-block">Become a volunteer</a>
+                </div>
+            }
+
+            <div><a class="btn btn-lg btn-default btn-block" asp-controller="Home" asp-action="NewsletterUserRegister" style="margin-bottom:15px">Keep connected</a></div>
+        </div>
+
+        <div class="vertical_facebookBar white">
+            <div class="fb-page" data-href="https://www.facebook.com/SouthAlive" data-tabs="timeline" data-width="350" data-height="690" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/SouthAlive" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SouthAlive">South Alive.</a></blockquote>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row white sponser">
+    <div class="col-lg-1 col-md-1"></div>
+    <div class="col-lg-2 col-md-2 col-sm-6 col-lg-offset-3 sponser-image">
+        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/ctoslogo.jpg" alt="" />
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
+        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/icclogo.jpg" alt="" />
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
+        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/iltlogo.jpg" alt="" />
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
+        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/pocock.jpg" alt="" />
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
+        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/southroadslogo.jpg" alt="" />
+    </div>
+    <div class="col-lg-1 col-md-1"></div>
+</div>
+
+
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=539163436255187";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>

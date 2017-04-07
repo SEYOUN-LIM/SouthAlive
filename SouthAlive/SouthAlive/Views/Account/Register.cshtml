@@ -1,0 +1,102 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+@section styles{
+    @*<link rel="Stylesheet" href="@Href("~/Content/MyStyles.css")" />*@
+    <style>
+        #RegisterBreadcrumb {
+            margin-bottom:50px;
+        }
+    </style>
+
+}
+
+<div class="container" id="RegisterForm">
+    <div class="row" id="RegisterBreadcrumb">
+        <ol class="breadcrumb transparent">
+            <li class="breadcrumb-item"><a href="~/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li class="breadcrumb-item active">Register</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+    <!--Form with header-->
+        <div class="card col-md-10">
+            <div class="card-block">
+
+                <!--Header-->
+                <div class="form-header red darken-4">
+                    <h3><i class="fa fa-user"></i> Register:</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                            <h4 class="text-center">Create a new account.</h4>
+
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="form-group md-form">                               
+                                <div class="col-md-10">
+                                    <input asp-for="FirstName" class="form-control" />
+                                    <label asp-for="FirstName" for="FirstName">FirstName</label>
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group md-form">
+                                <label asp-for="LastName" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="LastName" class="form-control" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group md-form">
+                                <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group md-form">
+                                <label asp-for="Email" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group md-form">
+                                <label asp-for="Password" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group md-form">
+                                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group md-form">
+                                <div class="col-md-10 flex-center">
+                                    <button type="submit" class="btn red darken-4">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+        @section Scripts {
+            @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+        }
