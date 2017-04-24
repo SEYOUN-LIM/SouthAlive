@@ -13,6 +13,10 @@ namespace SouthAlive.Controllers
         {
             return View();
         }
+        public IActionResult test()
+        {
+            return View();
+        }
         [Authorize]
         public IActionResult About()
         {

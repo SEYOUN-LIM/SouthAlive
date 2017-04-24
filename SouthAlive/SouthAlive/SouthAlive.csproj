@@ -13,9 +13,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\about\Contact\contactBanner.png" />
     <Content Include="wwwroot\images\about\introduction\Introduction.jpg" />
+    <Content Include="wwwroot\images\about\LocalInformation\localbanner.jpg" />
+    <Content Include="wwwroot\images\about\LocalInformation\stat1.JPG" />
+    <Content Include="wwwroot\images\about\LocalInformation\stat2.jpg" />
+    <Content Include="wwwroot\images\about\LocalInformation\stat3.jpg" />
+    <Content Include="wwwroot\images\about\LocalInformation\stat4.jpg" />
     <Content Include="wwwroot\images\about\Organization\organisationalChart.png" />
     <Content Include="wwwroot\images\about\Organization\organisationBanner2.jpg" />
+    <Content Include="wwwroot\images\about\Results\resultsBanner.jpg" />
+    <Content Include="wwwroot\images\about\Results\sa3.png" />
+    <Content Include="wwwroot\images\about\Results\sagraph1.PNG" />
+    <Content Include="wwwroot\images\about\Results\sagraph2.PNG" />
+    <Content Include="wwwroot\images\Home\CAROUSEL\slide1.png" />
+    <Content Include="wwwroot\images\Home\CAROUSEL\slide2.png" />
+    <Content Include="wwwroot\images\Home\CAROUSEL\slide3s.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />

@@ -4,206 +4,193 @@
 @section styles{
     @*<link rel="Stylesheet" href="@Href("~/Content/MyStyles.css")" />*@
     <style>
+        .FBBox {
+            padding-top:20px;
+            padding-bottom:20px;
+            border-radius:10px;
+        } 
         .sponser-image {
-            max-height:150px;
-
+            max-height: 150px;
         }
         .sponser {
             margin-top:50px;
         }
+
+        .fbc {
+            float: left;
+            display: inline-block;
+            margin: auto;
+            float: none;
+            max-height: 500px;
+        }
+
+        .well {
+            position: relative;
+            display: block;
+        }
+
+        .mt70 {
+            margin-top: 70px;
+        }
+
+        #columns {
+            column-width: 200px;
+            column-gap: 15px;
+        }
+
+
+            #columns figure {
+                display: inline-block;
+                border: 1px solid rgba(0,0,0,0.2);
+                margin: 0;
+                margin-bottom: 15px;
+                padding: 10px;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            }
+
+                #columns figure img {
+                    width: 100%;
+                }
+
+                #columns figure figcaption {
+                    border-top: 1px solid rgba(0,0,0,0.2);
+                    padding: 10px;
+                    margin-top: 11px;
+                }
+        .MainText {
+            border-radius: 10px;
+            background: #f67515;
+        }
+                .MainText > h4 {                   
+                    color:white;
+                    padding:20px;
+                    font-weight:600;              
+                }
+                .view > img {
+                    width:100%;
+                }
+        .carousel-caption > div {
+            background:#808080;
+            
+        }
+        #carousel {
+            margin:20px;
+        }
+        #carousel > ol > li {
+            border:1px solid blue;
+        }
+        #carousel > ol > li:active {
+            background:black;
+        }
+
     </style>
 
 }
 
-<div class="row">
-    <!-- Page Content -->
-    @*<div id="fb-root"></div>*@
+<div class="MainText z-depth-1">
+    <h4 class="text-center">"A vibrant and diverse community that takes the lead in its own future.."</h4>
+</div>
 
-
-    <!-- left body-->
-    <div class="col-lg-8 left_part" role="main">
-
-
-        <!--title bar-->
-        <div>
-            <h2>
-                "A vibrant and diverse community that takes the lead in its own future.."
-                <span>
-                    <a class="btn btn-default" asp-controller="About" asp-action="Index" role="button">Learn more</a>
-                </span>
-            </h2>
-        </div>
-        <!-- end title bar-->
-        
-   <!-- slider -->
-
-       @* <div>
-        <div id="myCarousel" class="carousel slide">
-            <!-- Carousel indicators -->
-            <ol class="carousel-indicators">
-                <!-- generate controls for carousel based on how many news are valid to show on home page -->
-                @{
-                    if (Model.News.Count > 0)
-                    {
-                        int counter = 0;
-                        foreach (var news in Model.News)
-                        {
-                            if (news.isShowOnHomePage)
-                            {
-                                if (counter == 0)
-                                {
-                                    <li data-target="#myCarousel" data-slide-to="@counter" class="active"></li>
-                                }
-                                else
-                                {
-                                    <li data-target="#myCarousel" data-slide-to="@counter"></li>
-                                }
-                            }
-
-                            counter++;
-                        }
-                    }
-                }
-            </ol>
-
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-                @{
-                    if (Model.News.Count > 0)
-                    {
-                        int counter = 0;
-                        foreach (var news in Model.News)
-                        {
-                            if (news.isShowOnHomePage)
-                            {
-                                if (counter == 0)
-                                {
-                                    <div class="active item">
-                                        <img class="img-center img-responsive news-image" src="~/images/News/@news.ImagePath" alt="" style="width:100%;height:400px" />
-                                        <div class="overlay-news">
-                                            <h2 class="">
-                                                <span>NEWS: <br />@news.NewsTitle</span>
-                                                <br />
-                                                <a asp-controller="News" asp-action="SingleNews" asp-route-param="@news.NewsId" class="btn btn-default btn-sm" style="margin-top:10px" role="button">Read More</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div class="item">
-                                        <img class="img-center img-responsive news-image" src="~/images/News/@news.ImagePath" alt="" style="width:100%;height:400px" />
-                                        <div class="overlay-news">
-                                            <h2 class="">
-                                                <span>NEWS: <br />@news.NewsTitle</span>
-                                                <br />
-                                                <a asp-controller="News" asp-action="SingleNews" asp-route-param="@news.NewsId" class="btn btn-default btn-sm" style="margin-top:10px" role="button">Read More</a>
-                                            </h2>
-                                        </div>
-                                    </div>
-                                }
-                                counter++;
-                            }
-                        }
-                    }
-                }
+<!--Carousel Wrapper-->
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="view hm-black-light mx-auto">
+                <img src="~/images/Home/CAROUSEL/slide1.png" alt="First slide">
             </div>
-
-            <!-- Carousel nav -->
-            <a class="carousel-control left-flat" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right-flat" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            <div class="carousel-caption">
+                <div><h3 class="h3-responsive"><span>Dog Park Project</span></h3></div>              
+            </div>
         </div>
-    </div>
-    <!-- slider -->*@
-        @*<!-- events bar-->
-        <div class="events col home_block">
-
-            @if (Model.Events.Count > 0)
-            {
-                foreach (var e in Model.Events)
-                {
-                    if (e.IsProved && e.IsPublicEvent)
-                    {
-                        @*<div class="col-xs-6 col-md-4 single_event text-center">
-                                <a class="thumbnail">
-                                    <img class="event_image img-responsive" src="~/images/Events/@e.EventImagePath" alt="placeholder image">
-                                </a>
-                                <div class="after">
-                                    <a asp-controller="Event" asp-action="EventDetail" asp-route-param="@e.EventId">@e.EventName</a>
-                                </div>
-                            </div>*@
-
-                        @*<div class="col text-center single_event">
-                            <div class="hovereffect">
-                                <img class="img-responsive event_image" src="~/images/Events/@e.EventImagePath" alt="">
-                                <div class="overlay">
-                                    <h2>@e.EventName</h2>
-                                    <a class="info" href="#">link here</a>
-                                </div>
-                            </div>
-                        </div>*@
-                    @*}
-                }
-            }*@
-        </div> <!-- end events -->
-         <!-- end left body-->
-
-    <div class="col-lg-4 signup-buttons">
-        <div class="col-lg-11 extra-buttons">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>
-                    <button class="btn btn-default btn-lg  btn-block" disabled>Become a volunteer</button>
-                </div>
-            }
-            else
-            {
-                <div>
-                    <a asp-controller="Account" asp-action="Register" class="btn btn-default btn-lg btn-block">Become a volunteer</a>
-                </div>
-            }
-
-            <div><a class="btn btn-lg btn-default btn-block" asp-controller="Home" asp-action="NewsletterUserRegister" style="margin-bottom:15px">Keep connected</a></div>
+        <div class="carousel-item">
+            <!--Mask color-->
+            <div class="view hm-black-strong mx-auto">
+                <img src="~/images/Home/CAROUSEL/slide3s.png" alt="Second slide">
+            </div>
+            <div class="carousel-caption">
+                <div><h3 class="h3-responsive"><span>Operation Zero Rubbish</span></h3></div> 
+            </div>
         </div>
-
-        <div class="vertical_facebookBar white">
-            <div class="fb-page" data-href="https://www.facebook.com/SouthAlive" data-tabs="timeline" data-width="350" data-height="690" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/SouthAlive" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/SouthAlive">South Alive.</a></blockquote>
+        <div class="carousel-item">
+            <!--Mask color-->
+            <div class="view hm-black-slight mx-auto">
+                <img src="~/images/Home/CAROUSEL/slide2.png" alt="Third slide">
+            </div>
+            <div class="carousel-caption">
+                <div><h3 class="h3-responsive"><span>Beautification Project</span></h3></div>
             </div>
         </div>
     </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
 
+
+
+
+
+<div class="FBBox grey z-depth-1">
+    <div class="facebookfeed container" id="columns"></div>
 </div>
 
 
-<div class="row white sponser">
-    <div class="col-lg-1 col-md-1"></div>
-    <div class="col-lg-2 col-md-2 col-sm-6 col-lg-offset-3 sponser-image">
-        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/ctoslogo.jpg" alt="" />
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
-        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/icclogo.jpg" alt="" />
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
-        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/iltlogo.jpg" alt="" />
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
-        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/pocock.jpg" alt="" />
-    </div>
-    <div class="col-lg-2 col-md-2 col-sm-6 sponser-image">
-        <img class="img-center img-fluid img-rounded vertical-center" src="~/images/Sponsers/southroadslogo.jpg" alt="" />
-    </div>
-    <div class="col-lg-1 col-md-1"></div>
-</div>
 
+@section scripts {
 
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=539163436255187";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    <script>
+        function getFacebook() {
+            var url = "https://graph.facebook.com/SouthAlive/posts?access_token=272745699845883|XAEUFdubUvWBsN6uqD4skcbb5oQ&callback=?";
 
-</script>
+            $.getJSON(url, function (json) {
+                var html2 = "";
+                //페이스북 json구조 하나의 object -> data,data,data....
+                $.each(json.data, function (i, fb) {
+                    html2 += "<figure class='white z-depth-2 sr-bottom'>";
+
+                    var str = fb.id.substring(16);
+                    var pic = "https://graph.facebook.com/" + str + "/picture";
+
+                    html2 += "<a href='http://facebook.com/" + str + "'>";
+                    html2 += "<img src='" + pic + "' style='background:black' onerror='this.src=" + '"/images/Brand.jpg"' + "'>";
+                    html2 += "</a >";
+
+                    var PostedDate = fb.created_time.slice(0, 10);
+
+                    if (fb.message != undefined) {
+                        html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.message + "</a></figcaption>";
+                    } else {
+                        if (fb.story != undefined) {
+                            html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.story + "</a></figcaption>";
+                        }
+                    }
+
+                    html2 += "</figure>";
+
+                });
+
+                $('.facebookfeed').html(html2);
+            });
+        };
+        getFacebook();
+
+    </script>
+
+}

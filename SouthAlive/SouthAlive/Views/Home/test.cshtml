@@ -1,0 +1,101 @@
+﻿@section styles {
+<style>
+    .fbc {
+        float: left;
+        display: inline-block;
+        margin: auto;
+        float: none;
+        max-height: 500px;
+    }
+
+    .well {
+        position: relative;
+        display: block;
+    }
+
+    .mt70 {
+        margin-top: 70px;
+    }
+
+    #columns {
+        column-width: 200px;
+        column-gap: 15px;
+    }
+
+
+        #columns figure {
+            display: inline-block;
+            border: 1px solid rgba(0,0,0,0.2);
+            margin: 0;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+            #columns figure img {
+                width: 100%;
+            }
+
+            #columns figure figcaption {
+                border-top: 1px solid rgba(0,0,0,0.2);
+                padding: 10px;
+                margin-top: 11px;
+            }
+</style>
+}
+<div class="section no-pad-bot indigo">
+    <div class="container">
+        <div class="row center">
+            <h1 class="flow-text center white-text">So yeah. We're Pretty Social.</h1>
+        </div>
+    </div>
+    <div class="facebookfeed container" id="columns"></div>
+
+</div>
+
+
+@section scripts {
+
+    <script>
+        function getFacebook() {
+            var url = "https://graph.facebook.com/SouthAlive/posts?access_token=272745699845883|XAEUFdubUvWBsN6uqD4skcbb5oQ&callback=?";
+
+            $.getJSON(url, function (json) {
+                var html2 = "";
+                //페이스북 json구조 하나의 object -> data,data,data....
+                $.each(json.data, function (i, fb) {
+                    html2 += "<figure class='white z-depth-2 sr-bottom'>";
+
+                    var str = fb.id.substring(16);
+                    var pic = "https://graph.facebook.com/" + str + "/picture";
+
+                    html2 += "<a href='http://facebook.com/" + str + "'>";
+                    html2 += "<img src='" + pic + "' style='background:black' onerror='this.src=" + '"/images/Brand.jpg"' + "'>";
+                    html2 += "</a >";
+
+                    var PostedDate = fb.created_time.slice(0, 10);
+
+                    if (fb.message != undefined) {
+                        html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.message + "</a></figcaption>";
+                    } else {
+                        if (fb.story != undefined) {
+                            html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.story + "</a></figcaption>";
+                        }
+                    }
+
+
+
+                    //html2 += "<p class='indigo-text center'>" + PostedDate + "</p>";
+
+                    html2 += "</figure>";
+
+                });
+
+                $('.facebookfeed').html(html2);
+            });
+        };
+        getFacebook();
+
+    </script>
+
+}
