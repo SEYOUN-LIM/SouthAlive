@@ -1,0 +1,59 @@
+@model SouthAlive.Models.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="ProductId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDetail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductDetail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductQuantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImgUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductImgUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategory)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ListedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ListedDate)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

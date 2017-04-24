@@ -12,7 +12,9 @@
                 <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-sm red darken-4 waves-effect">Log out</button>
+                <button type="submit" class="btn btn-sm red darken-4 waves-effect">
+                    <i class="fa fa-sign-in" aria-hidden="true">&nbsp;&nbsp;Log out</i>
+                </button>
             </li>
         </ul>
     </form>

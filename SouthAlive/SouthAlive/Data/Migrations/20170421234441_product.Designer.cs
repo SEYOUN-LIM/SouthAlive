@@ -8,9 +8,10 @@ using SouthAlive.Data;
 namespace SouthAlive.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170421234441_product")]
+    partial class product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -193,8 +194,6 @@ namespace SouthAlive.Data.Migrations
                     b.Property<string>("ProductImgUrl");
 
                     b.Property<string>("ProductName");
-
-                    b.Property<int>("ProductPrice");
 
                     b.Property<int>("ProductQuantity");
 

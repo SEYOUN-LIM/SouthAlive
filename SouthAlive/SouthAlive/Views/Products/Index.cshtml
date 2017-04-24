@@ -1,0 +1,82 @@
+@model IEnumerable<SouthAlive.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="row" style="padding:5px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 z-depth-2 white @Html.DisplayFor(modelItem => item.ProductCategory)" style="margin:5px;">
+            <div style="padding:3px;">
+                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ProductImgUrl)" style="width:100%;max-height:150px" />
+            </div>
+            <div>
+                <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+                <p>NZ$ @Html.DisplayFor(modelItem => item.ProductPrice)</p>
+          
+            </div>
+            <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+        </div>
+    }
+</div>
+@*<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductDetail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductImgUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ListedDate)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDetail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImgUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

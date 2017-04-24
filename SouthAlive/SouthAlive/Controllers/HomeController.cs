@@ -32,5 +32,15 @@ namespace SouthAlive.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Admin()
+        {
+            return View();
+        }
+        [Authorize]
+        public IActionResult UserPage()
+        {
+            return View();
+        }
     }
 }
