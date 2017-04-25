@@ -37,7 +37,20 @@
         }
     </style>
 
+
+
     @RenderSection("styles", required: false)
+
+    <!-- JQuery -->
+    <script src="~/lib/MDB Free/js/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="~/lib/MDB Free/js/tether.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/lib/MDB Free/js/bootstrap.js"></script>
+    <!-- MDB core JavaScript -->
+    <script src="~/lib/MDB Free/js/mdb.js"></script>
+    @*Scroll Reveal*@
+    <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
     
     @Html.Raw(JavaScriptSnippet.FullScript)
     
@@ -136,22 +149,13 @@
             <!--/.Footer-->
         </div>
 
-        <!-- JQuery -->
-        <script src="~/lib/MDB Free/js/jquery-2.2.3.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script src="~/lib/MDB Free/js/tether.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script src="~/lib/MDB Free/js/bootstrap.js"></script>
-        <!-- MDB core JavaScript -->
-        <script src="~/lib/MDB Free/js/mdb.js"></script>
-        @*Scroll Reveal*@
-        <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
+        
 
         @*MoJS*@
         <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
 
         <script src="~/lib/MDB Free/js/SRPlay.js"></script>
-        <script src="~/lib/MDB Free/js/moPlay.js"></script>
+        @*<script src="~/lib/MDB Free/js/moPlay.js"></script>*@
 
         @*Custom JS*@
         <script src="~/lib/MDB Free/js/site.js"></script>

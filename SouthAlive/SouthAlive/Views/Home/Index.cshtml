@@ -2,18 +2,19 @@
     ViewData["Title"] = "Home";
 }
 @section styles{
-    @*<link rel="Stylesheet" href="@Href("~/Content/MyStyles.css")" />*@
     <style>
         .FBBox {
-            padding-top:20px;
-            padding-bottom:20px;
-            border-radius:10px;
-        } 
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-radius: 10px;
+        }
+
         .sponser-image {
             max-height: 150px;
         }
+
         .sponser {
-            margin-top:50px;
+            margin-top: 50px;
         }
 
         .fbc {
@@ -57,39 +58,47 @@
                     padding: 10px;
                     margin-top: 11px;
                 }
+
         .MainText {
             border-radius: 10px;
             background: #f67515;
-        }
-                .MainText > h4 {                   
-                    color:white;
-                    padding:20px;
-                    font-weight:600;              
-                }
-                .view > img {
-                    width:100%;
-                }
-        .carousel-caption > div {
-            background:#808080;
-            
-        }
-        #carousel {
-            margin:20px;
-        }
-        #carousel > ol > li {
-            border:1px solid blue;
-        }
-        #carousel > ol > li:active {
-            background:black;
+            margin-left:50px;
+            margin-right:50px;
         }
 
+            .MainText > h4 {
+                color: white;
+                padding: 20px;
+                font-weight: 600;
+            }
+
+        .view > img {
+            width: 100%;
+        }
+
+        .carousel-caption > div {
+            background: #808080;
+        }
+
+        #carousel {
+            margin: 20px;
+        }
+
+            #carousel > ol > li {
+                border: 1px solid blue;
+            }
+
+                #carousel > ol > li:active {
+                    background: black;
+                }
     </style>
 
 }
-
+<br />
 <div class="MainText z-depth-1">
     <h4 class="text-center">"A vibrant and diverse community that takes the lead in its own future.."</h4>
 </div>
+<br /><br />
 
 <!--Carousel Wrapper-->
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -107,7 +116,7 @@
                 <img src="~/images/Home/CAROUSEL/slide1.png" alt="First slide">
             </div>
             <div class="carousel-caption">
-                <div><h3 class="h3-responsive"><span>Dog Park Project</span></h3></div>              
+                <div><h3 class="h3-responsive"><span>Dog Park Project</span></h3></div>
             </div>
         </div>
         <div class="carousel-item">
@@ -116,7 +125,7 @@
                 <img src="~/images/Home/CAROUSEL/slide3s.png" alt="Second slide">
             </div>
             <div class="carousel-caption">
-                <div><h3 class="h3-responsive"><span>Operation Zero Rubbish</span></h3></div> 
+                <div><h3 class="h3-responsive"><span>Operation Zero Rubbish</span></h3></div>
             </div>
         </div>
         <div class="carousel-item">
@@ -146,7 +155,7 @@
 
 
 
-
+<br /><br />
 <div class="FBBox grey z-depth-1">
     <div class="facebookfeed container" id="columns"></div>
 </div>

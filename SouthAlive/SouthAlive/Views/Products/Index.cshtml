@@ -1,82 +1,103 @@
 @model IEnumerable<SouthAlive.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pantry Shop";
+}
+@section styles{
+
+    <style>
+        .ContactTitle {
+            padding: 30px;
+            color: white;
+            background: #1d90d3;
+            border-radius: 10px;
+        }
+
+        #Contact_IMG {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-
-<div class="row" style="padding:5px;">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-3 z-depth-2 white @Html.DisplayFor(modelItem => item.ProductCategory)" style="margin:5px;">
-            <div style="padding:3px;">
-                <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ProductImgUrl)" style="width:100%;max-height:150px" />
-            </div>
-            <div>
-                <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
-                <p>NZ$ @Html.DisplayFor(modelItem => item.ProductPrice)</p>
-          
-            </div>
-            <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
-        </div>
-    }
+<div class="row">
+    <ol class="breadcrumb transparent">
+        <li class="breadcrumb-item"><a href="~/"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+        <li class="breadcrumb-item active">Shop</li>
+    </ol>
 </div>
-@*<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductDetail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductQuantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductImgUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductCategory)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ListedDate)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDetail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductQuantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductImgUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductCategory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ListedDate)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
+
+<div class="col-lg-12">
+    <h3 class="text-center ContactTitle z-depth-1"><b>Pantry Shop</b></h3><br />
+    @if (User.Identity.Name == "imseyoun@gmail.com")
+    {
+        <p>
+            <a asp-action="Create">Add Product</a>
+        </p>
+    }
+
+
+    <div class="row">
+        <div class="col-lg-4 right">
+            <select class="mdb-select CategoryOption">
+                <option value="">Choose Category</option>
+                <option value="All">All</option>
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+            </select>
+
+            <a class="btn btn-sm btn-primary btnCat">Click</a>
+
+        </div>
+    </div>
+
+    <div class="row" style="padding:5px;">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 z-depth-2 white product @Html.DisplayFor(modelItem => item.ProductCategory)" style="margin:5px;">
+                <div style="padding:3px;">
+                    <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ProductImgUrl)" style="width:100%;max-height:150px" />
+                </div>
+                <div>
+                    <p>Category : @Html.DisplayFor(modelItem => item.ProductCategory)</p>
+                    <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+                    <p>NZ$ @Html.DisplayFor(modelItem => item.ProductPrice)</p>
+
+                </div>
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
+            </div>
+        }
+    </div>
+
+
+
+
+
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('.btnCat').click(function () {
+                $abc = $('.CategoryOption').val();
+                if ($abc === 'All') {
+                    $('.product').show(200);
+                } else {
+                    $('.product').hide(200);
+                    $('.' + $abc).show(200);
+                }
+
+            });
+        });
+
+        // Material Select Initialization
+        $(window).load(function () {
+            $('.mdb-select').material_select();
+        });
+
+    </script>
 }
-    </tbody>
-</table>*@

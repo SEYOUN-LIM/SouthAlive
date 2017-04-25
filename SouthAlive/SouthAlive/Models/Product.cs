@@ -14,6 +14,6 @@ namespace SouthAlive.Models
         public string ProductImgUrl { get; set; }
         public string ProductCategory { get; set; }
         public DateTime ListedDate { get; set; }
-        public int ProductPrice { get; set; }
+        public string ProductPrice { get; set; }
     }
 }

@@ -93,6 +93,8 @@ namespace SouthAlive.Controllers
                 return NotFound();
             }
 
+            product.ListedDate = product.ListedDate;
+            
             if (ModelState.IsValid)
             {
                 try

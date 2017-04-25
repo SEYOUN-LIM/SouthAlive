@@ -20,7 +20,7 @@
             @Html.DisplayNameFor(model => model.ProductPrice)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ProductPrice)
+            NZ$ @Html.DisplayFor(model => model.ProductPrice)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ProductDetail)
@@ -35,10 +35,12 @@
             @Html.DisplayFor(model => model.ProductQuantity)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ProductImgUrl)
+            @*@Html.DisplayNameFor(model => model.ProductImgUrl)*@
+            Product Image
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ProductImgUrl)
+            <img src="@Html.DisplayFor(model => model.ProductImgUrl)" alt="Alternate Text" />
+            
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ProductCategory)
