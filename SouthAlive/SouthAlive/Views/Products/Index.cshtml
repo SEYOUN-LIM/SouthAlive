@@ -17,6 +17,14 @@
             margin: 0;
             padding: 0;
         }
+
+        .productImg {
+            padding:5px;
+        }
+        .ProductContentBox {
+            padding:10px;
+        }
+
     </style>
 
 }
@@ -40,16 +48,22 @@
 
 
     <div class="row">
-        <div class="col-lg-4 right">
-            <select class="mdb-select CategoryOption">
+        <div class="col-xs-8">
+            <select class="form-control CategoryOption">
                 <option value="">Choose Category</option>
                 <option value="All">All</option>
                 <option value="a">a</option>
                 <option value="b">b</option>
                 <option value="c">c</option>
             </select>
+          </div>
+        <div class="col-xs-4">
+            <a class="btn btn-primary btnCat">Click</a>
 
-            <a class="btn btn-sm btn-primary btnCat">Click</a>
+            <!-- Button trigger modal -->
+            <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;&nbsp;Cart<span class="CartIcon"></span>
+            </a>
 
         </div>
     </div>
@@ -57,17 +71,21 @@
     <div class="row" style="padding:5px;">
         @foreach (var item in Model)
         {
-            <div class="col-lg-3 z-depth-2 white product @Html.DisplayFor(modelItem => item.ProductCategory)" style="margin:5px;">
-                <div style="padding:3px;">
-                    <img class="img-fluid" src="@Html.DisplayFor(modelItem => item.ProductImgUrl)" style="width:100%;max-height:150px" />
+            <div class="col-lg-3 col-md-4 col-sm-6 product @Html.DisplayFor(modelItem => item.ProductCategory)">
+                <div class="white z-depth-1">
+                    <div style="padding:3px;">
+                        <a href="/Products/Details/@item.ProductId"><img class="img-fluid productImg" src="@item.ProductImgUrl" style="width:100%;max-height:150px" /></a>
+                    </div>
+                    <div class="ProductContentBox">
+                        <p>Category : @Html.DisplayFor(modelItem => item.ProductCategory)</p>
+                        <a href="/Products/Details/@item.ProductId"><h3 class="text-center">@Html.DisplayFor(modelItem => item.ProductName)</h3></a>
+                        <span>NZ$ </span><span class="price-@item.ProductId">@Html.DisplayFor(modelItem => item.ProductPrice)</span>
+                        <a class="pull-right AddCart" data-toggle="tooltip" data-placement="top" title="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+                        <div class="hiddendiv">@item.ProductId, @item.ProductName, @item.ProductPrice, @item.ProductImgUrl</div>
+                                
+                    </div>
+                    
                 </div>
-                <div>
-                    <p>Category : @Html.DisplayFor(modelItem => item.ProductCategory)</p>
-                    <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
-                    <p>NZ$ @Html.DisplayFor(modelItem => item.ProductPrice)</p>
-
-                </div>
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a>
             </div>
         }
     </div>
@@ -75,11 +93,40 @@
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">Shopping List</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Pay</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- /.Live preview-->
+
+    <div class="label"></div>
 
 </div>
 
+
 @section scripts {
     <script>
+        var Cart = new Array();
+        var Product = '';
+        var CartListCount = 0;
         $(document).ready(function () {
 
             $('.btnCat').click(function () {
@@ -92,12 +139,30 @@
                 }
 
             });
+
+
+            $('.AddCart').click(function () {
+                CartListCount += 1;
+                $('.CartIcon').empty();
+                $('.CartIcon').append(' ' + CartListCount);
+
+                $bb = $(this).parent().find('div').text();
+                var bbArray = $bb.split(",");
+
+                
+                $('.modal-body').append('ID: ' + bbArray[0]);
+                $('.modal-body').append(', Name: ' + bbArray[1]);
+                $('.modal-body').append(', Price: ' + bbArray[2] + '<br />');
+            });
+
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').focus()
+            });
+
+
         });
 
-        // Material Select Initialization
-        $(window).load(function () {
-            $('.mdb-select').material_select();
-        });
+
 
     </script>
 }
