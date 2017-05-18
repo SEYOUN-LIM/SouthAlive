@@ -1,0 +1,51 @@
+﻿@section styles {
+    <style>
+        .product {
+            padding:20px;
+            margin:10px;
+  
+        }
+    </style>
+}
+<div>
+    <h1>Pantry Shop</h1>
+</div>
+
+<div class="row" id="lstProducts">
+
+</div>
+
+
+@section scripts {
+    <script>
+        function displayData() {
+            $('#lstProducts').empty();
+            $.getJSON("/api/ApiShop/", function (data) {
+                $.each(data, function (key, val) {
+                    var str = "";
+                    str += "<div class='col col-lg-3 white product z-depth-1'>";
+                    str += "<a href='/Products/Details/" + val.productId + "'>";
+                    str += "<img height='200' width='100%' src='" + val.productImgUrl+"' alt='Alternate Text' />";
+                    str += "<h4 class='text-center'>" + val.productName + "</h4></a><br>";
+                    str += "<p>NZ $" + val.productPrice + "</p>";
+                    str += "</div>";
+                    $('#lstProducts').append(str);
+
+                    //var str =
+                    //    "ProductID: " + val.productId +
+                    //    "ProductName: " + val.productName +
+                    //    "ProductPrice: NZ $" + val.productPrice;
+                    //$('<li/>', { html: str }).appendTo($('#lstProducts'));
+                    console.log(val);
+                });
+            });
+
+        }
+
+        $(document).ready(function () {
+
+            displayData();
+
+        });
+    </script>
+}

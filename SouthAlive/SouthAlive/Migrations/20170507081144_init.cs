@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace SouthAlive.Data.Migrations
+namespace SouthAlive.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +46,9 @@ namespace SouthAlive.Data.Migrations
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    JoinDate = table.Column<DateTime>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -62,6 +63,48 @@ namespace SouthAlive.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cart",
+                columns: table => new
+                {
+                    CartID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserEmail = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cart", x => x.CartID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductCategory",
+                columns: table => new
+                {
+                    ProductCategoryID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Category = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategory", x => x.ProductCategoryID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Recipe",
+                columns: table => new
+                {
+                    RecipeID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Description = table.Column<string>(nullable: true),
+                    ImgPath = table.Column<string>(nullable: true),
+                    RecipeName = table.Column<string>(nullable: true),
+                    VideoPath = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recipe", x => x.RecipeID);
                 });
 
             migrationBuilder.CreateTable(
@@ -150,10 +193,88 @@ namespace SouthAlive.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    ProductId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ListedDate = table.Column<DateTime>(nullable: false),
+                    ProductCategoryID = table.Column<int>(nullable: false),
+                    ProductDetail = table.Column<string>(nullable: true),
+                    ProductImgUrl = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
+                    ProductPrice = table.Column<string>(nullable: true),
+                    ProductQuantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
+                    table.ForeignKey(
+                        name: "FK_Product_ProductCategory_ProductCategoryID",
+                        column: x => x.ProductCategoryID,
+                        principalTable: "ProductCategory",
+                        principalColumn: "ProductCategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartProduct",
+                columns: table => new
+                {
+                    CartProductID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CartID = table.Column<int>(nullable: false),
+                    ProductID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartProduct", x => x.CartProductID);
+                    table.ForeignKey(
+                        name: "FK_CartProduct_Cart_CartID",
+                        column: x => x.CartID,
+                        principalTable: "Cart",
+                        principalColumn: "CartID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CartProduct_Product_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Product",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecipeProduct",
+                columns: table => new
+                {
+                    RecipeProductID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductID = table.Column<int>(nullable: false),
+                    RecipeID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecipeProduct", x => x.RecipeProductID);
+                    table.ForeignKey(
+                        name: "FK_RecipeProduct_Product_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Product",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RecipeProduct_Recipe_RecipeID",
+                        column: x => x.RecipeID,
+                        principalTable: "Recipe",
+                        principalColumn: "RecipeID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
-                column: "NormalizedName");
+                column: "NormalizedName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -176,11 +297,6 @@ namespace SouthAlive.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -190,6 +306,31 @@ namespace SouthAlive.Data.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartProduct_CartID",
+                table: "CartProduct",
+                column: "CartID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartProduct_ProductID",
+                table: "CartProduct",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_ProductCategoryID",
+                table: "Product",
+                column: "ProductCategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RecipeProduct_ProductID",
+                table: "RecipeProduct",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RecipeProduct_RecipeID",
+                table: "RecipeProduct",
+                column: "RecipeID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,10 +351,28 @@ namespace SouthAlive.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "CartProduct");
+
+            migrationBuilder.DropTable(
+                name: "RecipeProduct");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Cart");
+
+            migrationBuilder.DropTable(
+                name: "Product");
+
+            migrationBuilder.DropTable(
+                name: "Recipe");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategory");
         }
     }
 }

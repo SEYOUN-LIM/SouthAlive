@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SouthAlive.Models;
+using SouthAlive.Models.PantryModels;
 
 namespace SouthAlive.Data
 {
@@ -23,6 +24,19 @@ namespace SouthAlive.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<SouthAlive.Models.Product> Product { get; set; }
+        public DbSet<SouthAlive.Models.PantryModels.Cart> Cart { get; set; }
+
+        public DbSet<SouthAlive.Models.PantryModels.CartProduct> CartProduct { get; set; }
+
+        public DbSet<SouthAlive.Models.PantryModels.Product> Product { get; set; }
+
+        public DbSet<SouthAlive.Models.PantryModels.Recipe> Recipe { get; set; }
+
+        public DbSet<SouthAlive.Models.PantryModels.RecipeProduct> RecipeProduct { get; set; }
+
+        public DbSet<SouthAlive.Models.PantryModels.ProductCategory> ProductCategory { get; set; }
+
+
+
     }
 }

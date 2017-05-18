@@ -1,4 +1,4 @@
-@model SouthAlive.Models.Product
+@model SouthAlive.Models.PantryModels.Product
 
 @{
     ViewData["Title"] = "Delete";
@@ -37,16 +37,22 @@
             @Html.DisplayFor(model => model.ProductImgUrl)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ProductCategory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductCategory)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.ListedDate)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ListedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategory.ProductCategoryID)
         </dd>
     </dl>
     

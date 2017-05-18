@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using SouthAlive.Data;
 
-namespace SouthAlive.Data.Migrations
+namespace SouthAlive.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -179,14 +179,44 @@ namespace SouthAlive.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SouthAlive.Models.Product", b =>
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.Cart", b =>
+                {
+                    b.Property<int>("CartID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("UserEmail");
+
+                    b.HasKey("CartID");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.CartProduct", b =>
+                {
+                    b.Property<int>("CartProductID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CartID");
+
+                    b.Property<int>("ProductID");
+
+                    b.HasKey("CartProductID");
+
+                    b.HasIndex("CartID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("CartProduct");
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("ListedDate");
 
-                    b.Property<string>("ProductCategory");
+                    b.Property<int>("ProductCategoryID");
 
                     b.Property<string>("ProductDetail");
 
@@ -200,7 +230,57 @@ namespace SouthAlive.Data.Migrations
 
                     b.HasKey("ProductId");
 
+                    b.HasIndex("ProductCategoryID");
+
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.ProductCategory", b =>
+                {
+                    b.Property<int>("ProductCategoryID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Category");
+
+                    b.HasKey("ProductCategoryID");
+
+                    b.ToTable("ProductCategory");
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.Recipe", b =>
+                {
+                    b.Property<int>("RecipeID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("ImgPath");
+
+                    b.Property<string>("RecipeName");
+
+                    b.Property<string>("VideoPath");
+
+                    b.HasKey("RecipeID");
+
+                    b.ToTable("Recipe");
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.RecipeProduct", b =>
+                {
+                    b.Property<int>("RecipeProductID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<int>("RecipeID");
+
+                    b.HasKey("RecipeProductID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("RecipeID");
+
+                    b.ToTable("RecipeProduct");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -237,6 +317,40 @@ namespace SouthAlive.Data.Migrations
                     b.HasOne("SouthAlive.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.CartProduct", b =>
+                {
+                    b.HasOne("SouthAlive.Models.PantryModels.Cart", "Cart")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SouthAlive.Models.PantryModels.Product", "Product")
+                        .WithMany("CartProducts")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.Product", b =>
+                {
+                    b.HasOne("SouthAlive.Models.PantryModels.ProductCategory", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SouthAlive.Models.PantryModels.RecipeProduct", b =>
+                {
+                    b.HasOne("SouthAlive.Models.PantryModels.Product", "Product")
+                        .WithMany("RecipeProducts")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SouthAlive.Models.PantryModels.Recipe", "Recipe")
+                        .WithMany("RecipeProducts")
+                        .HasForeignKey("RecipeID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

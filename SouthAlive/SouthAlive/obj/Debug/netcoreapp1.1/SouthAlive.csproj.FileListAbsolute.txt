@@ -3,8 +3,8 @@ C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\bin\Debug\netcoreapp1
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\bin\Debug\netcoreapp1.1\SouthAlive.runtimeconfig.dev.json
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\bin\Debug\netcoreapp1.1\SouthAlive.dll
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\bin\Debug\netcoreapp1.1\SouthAlive.pdb
-C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\SouthAlive.csprojResolveAssemblyReference.cache
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\SouthAlive.AssemblyInfo.cs
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\SouthAlive.dll
 C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\SouthAlive.pdb
+C:\Users\Seyoun\Documents\SouthAlive\SouthAlive\SouthAlive\obj\Debug\netcoreapp1.1\SouthAlive.csprojResolveAssemblyReference.cache

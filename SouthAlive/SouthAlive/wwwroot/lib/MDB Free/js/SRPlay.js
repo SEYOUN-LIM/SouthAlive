@@ -50,6 +50,24 @@
         scale: 1,
         distance: '50px'
     }, 200);
+
+    sr.reveal('.sr-titleR', {
+        origin: "right",
+        duration: 500,
+        easing: 'ease-in-out',
+        scale: 1,
+        reset: true,
+        distance: '80px'
+    }, 200);
+
+    sr.reveal('.sr-bottom', {
+        origin: "bottom",
+        duration: 500,
+        easing: 'ease-in-out',
+        scale: 1,
+        reset: true,
+        distance: '80px'
+    }, 200);
 };
 
 srPlay();

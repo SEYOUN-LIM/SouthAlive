@@ -49,8 +49,7 @@
     <script src="~/lib/MDB Free/js/bootstrap.js"></script>
     <!-- MDB core JavaScript -->
     <script src="~/lib/MDB Free/js/mdb.js"></script>
-    @*Scroll Reveal*@
-    <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
+    
     
     @Html.Raw(JavaScriptSnippet.FullScript)
     
@@ -85,14 +84,14 @@
                             <a class="nav-link" href="/ZeroRubbish">ZERORUBBISH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Products">PANTRY SHOP</a>
+                            <a class="nav-link" href="/Shop">SHOP</a>
                         </li>
+@if (User.IsInRole("Admin"))
+{
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/Admin">ADMIN</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Home/UserPage">USER</a>
-                        </li>
+}
 
                     </ul>
 
@@ -152,8 +151,10 @@
         
 
         @*MoJS*@
-        <script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
-
+        @*<script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>*@
+        
+        @*Scroll Reveal*@
+        <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
         <script src="~/lib/MDB Free/js/SRPlay.js"></script>
         @*<script src="~/lib/MDB Free/js/moPlay.js"></script>*@
 

@@ -1,0 +1,30 @@
+@model SouthAlive.Models.PantryModels.RecipeProduct
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecipeProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Recipe.RecipeID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RecipeProductID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

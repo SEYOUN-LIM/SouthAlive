@@ -1,4 +1,4 @@
-@model SouthAlive.Models.Product
+@model SouthAlive.Models.PantryModels.Product
 
 @{
     ViewData["Title"] = "Details";
@@ -17,12 +17,6 @@
             @Html.DisplayFor(model => model.ProductName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </dt>
-        <dd>
-            NZ$ @Html.DisplayFor(model => model.ProductPrice)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.ProductDetail)
         </dt>
         <dd>
@@ -35,24 +29,28 @@
             @Html.DisplayFor(model => model.ProductQuantity)
         </dd>
         <dt>
-            @*@Html.DisplayNameFor(model => model.ProductImgUrl)*@
-            Product Image
+            @Html.DisplayNameFor(model => model.ProductImgUrl)
         </dt>
         <dd>
-            <img src="@Html.DisplayFor(model => model.ProductImgUrl)" alt="Alternate Text" />
-            
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductCategory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductCategory)
+            @Html.DisplayFor(model => model.ProductImgUrl)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ListedDate)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ListedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategory.Category)
         </dd>
     </dl>
 </div>
