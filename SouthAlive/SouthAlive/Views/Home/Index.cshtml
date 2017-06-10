@@ -174,35 +174,39 @@
 
     <script>
         function getFacebook() {
-            var url = "https://graph.facebook.com/SouthAlive/posts?access_token=272745699845883|XAEUFdubUvWBsN6uqD4skcbb5oQ&callback=?";
+            var url = "https://graph.facebook.com/SouthAlive/posts?access_token=272745699845883|XAEUFdubUvWBsN6uqD4skcbb5oQ";
 
             $.getJSON(url, function (json) {
                 var html2 = "";
-                //페이스북 json구조 하나의 object -> data,data,data....
-                $.each(json.data, function (i, fb) {
+                console.log(json.data.length);
+                for (var j = 0; j < 10; j++) {
+                    json.data[j]
+
+
                     html2 += "<figure class='white z-depth-2 sr-bottom'>";
 
-                    var str = fb.id.substring(16);
+                    var str = json.data[j].id.substring(16);
                     var pic = "https://graph.facebook.com/" + str + "/picture";
 
                     html2 += "<a href='http://facebook.com/" + str + "'>";
                     html2 += "<img src='" + pic + "' style='background:black' onerror='this.src=" + '"/images/Brand.jpg"' + "'>";
                     html2 += "</a >";
 
-                    var PostedDate = fb.created_time.slice(0, 10);
+                    var PostedDate = json.data[j].created_time.slice(0, 10);
 
-                    if (fb.message != undefined) {
-                        html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.message + "</a></figcaption>";
+                    if (json.data[j].message != undefined) {
+                        html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + json.data[j].message.slice(0, 50) + "...</a></figcaption>";
                     } else {
-                        if (fb.story != undefined) {
-                            html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + fb.story + "</a></figcaption>";
+                        if (json.data[j].story != undefined) {
+                            html2 += "<figcaption><a href='http://facebook.com/" + str + "'>" + json.data[j].story + "</a></figcaption>";
                         }
                     }
 
                     html2 += "</figure>";
 
-                });
+                }
 
+               
                 $('.facebookfeed').html(html2);
             });
         };

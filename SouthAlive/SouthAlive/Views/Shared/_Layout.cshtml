@@ -8,33 +8,209 @@
     <title>@ViewData["Title"] - SouthAlive</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <link href="~/lib/MDB Free/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/MDB Free/css/mdb.css" rel="stylesheet" />
-        
+
     <link rel="stylesheet" href="~/css/site.css" />
-
+    <link href="https://fonts.googleapis.com/css?family=Passion+One:400,700" rel="stylesheet">
     <style>
+        h1, h2, h3, h4, h5, h6, p, a, li, i {
+            font-family: 'Passion One', cursive;
+        }
+        @@media screen and (max-width: 993px) {
+            .nav-container {
+                background: #2c2d5e;
+            }
+            .nav-logo-next, .nav-about-next, .nav-zrorubbish-next, .nav-shop-next {
+                height: 0px;
+            }
+            .nav-logo a {
+                font-size:1.5em;
+            }
+            .nav-about {
+                background: #fce14a;
+                font-size: 1.5em;
+            }
+            .nav-zerorubbish {
+                background: #58f86d;
+                font-size: 1.5em;
+            }
+            .nav-shop {
+                background: #e35df7;
+                font-size: 1.5em;
+            }
+            .nav-venues {
+                background: #fd9348;
+                font-size: 1.5em;
+            }
+            .loginPatial {
+                padding:20px;
+            }
+            .dropdown-item:nth-child(1) {
+                background: red;
+            }
 
+        } 
+        @@media screen and (min-width: 993px) {
 
-        #navbarNav1 > ul > li > div {
-            background: #263238 !important;
+            .nav-logo {
+                padding: 8px;
+                padding-bottom: 9px;
+                padding-right: 10px;
+                padding-left: 20px;
+                margin: 0;
+                background: #5f64ea;
+                transform: skew(25deg);
+                z-index: 2;
+            }
+
+                .nav-logo a {
+                    font-weight: 700;
+                    color: #363636 !important;
+                    transform: skew(-25deg);
+                }
+
+            .nav-logo-next {
+                margin: 0;
+                padding: 16px;
+                padding-bottom: 14px;
+                background: #1a214f;
+                z-index: 1;
+                width: 88px;
+                margin-left: -30px;
+            }
+
+            .nav-about {
+                padding: 7px;
+                margin-left: -30px !important;
+                background: #fce14a;
+                margin: 0;
+                z-index: 2;
+                transform: skew(-25deg);
+            }
+
+                .nav-about > a, .nav-about > div {
+                    margin: 0;
+                    font-weight: 500;
+                    color: #1a214f !important;
+                    transform: skew(25deg);
+                }
+
+            .nav-about-next {
+                margin: 0;
+                padding: 16px;
+                padding-bottom: 14px;
+                background: #3b371c;
+                z-index: 1;
+                width: 100px;
+                margin-left: -30px;
+            }
+
+            .nav-zerorubbish {
+                padding: 7px;
+                margin-left: -45px !important;
+                background: #58f86d;
+                margin: 0;
+                z-index: 2;
+                transform: skew(25deg);
+            }
+
+                .nav-zerorubbish a {
+                    margin: 0;
+                    font-weight: 500;
+                    color: #1a214f !important;
+                    transform: skew(-25deg);
+                }
+
+            .nav-zrorubbish-next {
+                margin: 0;
+                padding: 16px;
+                padding-bottom: 14px;
+                background: #294e19;
+                z-index: 1;
+                width: 100px;
+                margin-left: -30px;
+            }
+
+            .nav-shop {
+                padding: 7px;
+                margin-left: -45px !important;
+                background: #e35df7;
+                margin: 0;
+                z-index: 2;
+                transform: skew(-25deg);
+            }
+
+                .nav-shop a {
+                    margin: 0;
+                    font-weight: 500;
+                    color: #1a214f !important;
+                    transform: skew(25deg);
+                }
+
+            .nav-shop-next {
+                margin: 0;
+                padding: 16px;
+                padding-bottom: 14px;
+                background: #4c1953;
+                z-index: 1;
+                width: 100px;
+                margin-left: -30px;
+            }
+
+            .nav-venues {
+                padding: 7px;
+                margin-left: -45px !important;
+                background: #fd9348;
+                margin: 0;
+                z-index: 2;
+                transform: skew(25deg);
+            }
+
+                .nav-venues a {
+                    margin: 0;
+                    font-weight: 500;
+                    color: #1a214f !important;
+                    transform: skew(-25deg);
+                }
+        }
+        @@media screen and (max-width: 992px) {
+            .nav-logo {
+                padding:0;
+                margin:0;
+                font-weight:700;
+            }
+            .nav-logo > a {
+                padding:20px;
+            }
+            .navbar-toggler {
+                padding: 20px;
+            }
+            .nav-item {
+                padding-left:20px;
+            }
+        
         }
 
-        #navbarNav1 > ul > li > div > a {
-            color:white !important;
-        }
-            #navbarNav1 > ul > li > div > a:hover {
+            #navbarNav1 > ul > li > div {
                 background: #263238 !important;
-                color: white !important;
             }
-           
-        @@media screen and (min-width: 800px) {
-            div > ul > li > a:hover, #navbarNav1 > ul > li > div > a:hover {
-                font-weight:500;
+
+                #navbarNav1 > ul > li > div > a {
+                    color: white !important;
+                }
+
+                    #navbarNav1 > ul > li > div > a:hover {
+                        background: #263238 !important;
+                        color: white !important;
+                    }
+
+            @@media screen and (min-width: 800px) {
+                div > ul > li > a:hover, #navbarNav1 > ul > li > div > a:hover {
+                }
             }
-        }
     </style>
 
 
@@ -48,120 +224,136 @@
     <!-- Bootstrap core JavaScript -->
     <script src="~/lib/MDB Free/js/bootstrap.js"></script>
     <!-- MDB core JavaScript -->
-    <script src="~/lib/MDB Free/js/mdb.js"></script>
     
-    
+
+
     @Html.Raw(JavaScriptSnippet.FullScript)
-    
+
 </head>
 <body class="amber accent-1">
     <!--Navbar-->
-    <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar special-color-dark">
-            <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-dark scrolling-navbar special-color-dark" style="padding:0;">
+        <div class="container nav-container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="nav-logo">
+
                 <a class="navbar-brand" href="/Home">
-                    <strong>SouthAlive</strong>
+                    SouthAlive
                 </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown btn-group">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ABOUT</a>
-                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="/About/Introduction">INTRODUCTION</a>
-                                <a class="dropdown-item" href="/About/Organisation">ORGANISATION</a>
-                                <a class="dropdown-item" href="/About/Teams_And_Projects">TEAMS & PROJECTS</a>
-                                <a class="dropdown-item" href="/About/Results">RESULTS</a>
-                                <a class="dropdown-item" href="/About/SponsorInformation">SPONSER INFORMATION</a>
-                                <a class="dropdown-item" href="/About/LocalInformation">LOCAL INFORMATION</a>
-                                <a class="dropdown-item" href="/About/Contact">CONTACT</a>
 
-                            </div>
-                        </li>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="navbarNav1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-logo-next">&nbsp;</li>
+                    <li class="nav-item dropdown btn-group nav-about">
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ABOUT</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="/About/Introduction">INTRODUCTION</a>
+                            <a class="dropdown-item" href="/About/Organisation">ORGANISATION</a>
+                            <a class="dropdown-item" href="/About/Teams_And_Projects">TEAMS & PROJECTS</a>
+                            <a class="dropdown-item" href="/About/Results">RESULTS</a>
+                            <a class="dropdown-item" href="/About/SponsorInformation">SPONSER INFORMATION</a>
+                            <a class="dropdown-item" href="/About/LocalInformation">LOCAL INFORMATION</a>
+                            <a class="dropdown-item" href="/About/Contact">CONTACT</a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ZeroRubbish">ZERORUBBISH</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Shop">SHOP</a>
-                        </li>
-@if (User.IsInRole("Admin"))
-{
+                        </div>
+                    </li>
+                    <li class="nav-about-next">&nbsp;</li>
+
+                    <li class="nav-item nav-zerorubbish">
+                        <a class="nav-link" href="/ZeroRubbish"><b>ZERORUBBISH</b></a>
+                    </li>
+                    <li class="nav-zrorubbish-next">&nbsp;</li>
+
+                    <li class="nav-item nav-shop">
+                        <a class="nav-link" href="/Shop">SHOP</a>
+                    </li>
+                    <li class="nav-shop-next">&nbsp;</li>
+
+
+                    <li class="nav-item nav-venues">
+                        <a class="nav-link" href="/Shop">VENUES</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/Admin">ADMIN</a>
                         </li>
-}
+                    }
 
-                    </ul>
+                </ul>
 
-                    <ul class="navbar-nav nav-flex-icons">
+                <ul class="navbar-nav nav-flex-icons">
 
-                        <li class="nav-item">
-                            @await Html.PartialAsync("_LoginPartial")
-                        </li>
+                    <li class="nav-item loginPatial">
+                        @await Html.PartialAsync("_LoginPartial")
+                    </li>
 
-                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+
+
+    <div style="height:70px"></div>
+
+
+    <!--/.Navigation & Intro-->
+
+    <div class="container rgba-white-strong z-depth-2" style="padding:10px;">
+        @RenderBody()
+        <hr />
+    </div>
+    <div>
+        <!--Footer-->
+        <footer class="page-footer special-color-dark center-on-small-only modal-fixed-footer" id="footer">
+
+            <!--Footer Links-->
+            <div class="container">
+                <div class="row">
+
+                    <!--First column-->
+                    <div class="col-md-12">
+                        <h5 class="title">Contact Us</h5>
+                        <p>Office:Shop 6, South City Mall. PO Box 7055, South Invercargill</p>
+                        <p>Email: <a href="mailto:southalive.gmail.com">southalive@gmail.com</a></p>
+                    </div>
+
                 </div>
             </div>
-        </nav>
-        <!--/.Navbar-->
+            <!--/.Footer Links-->
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="container-fluid">
+                    Copyright &copy; <a href="https://www.SouthAlive.com"> Southalive 2017 </a>
 
-
-
-        <div style="height:70px"></div>
-
-
-        <!--/.Navigation & Intro-->
-
-        <div class="container rgba-white-strong z-depth-2" style="padding:10px;">
-            @RenderBody()
-            <hr />
-        </div>
-        <div>
-            <!--Footer-->
-            <footer class="page-footer special-color-dark center-on-small-only modal-fixed-footer" id="footer">
-
-                <!--Footer Links-->
-                <div class="container">
-                    <div class="row">
-
-                        <!--First column-->
-                        <div class="col-md-12">
-                            <h5 class="title">Contact Us</h5>
-                            <p>Office:Shop 6, South City Mall. PO Box 7055, South Invercargill</p>
-                            <p>Email: <a href="mailto:southalive.gmail.com">southalive@gmail.com</a></p>
-                        </div>
-
-                    </div>
                 </div>
-                <!--/.Footer Links-->
-                <!--Copyright-->
-                <div class="footer-copyright">
-                    <div class="container-fluid">
-                        Copyright &copy; <a href="https://www.SouthAlive.com"> Southalive 2017 </a>
+            </div>
+            <!--/.Copyright-->
+        </footer>
+        <!--/.Footer-->
+    </div>
 
-                    </div>
-                </div>
-                <!--/.Copyright-->
-            </footer>
-            <!--/.Footer-->
-        </div>
 
-        
 
-        @*MoJS*@
-        @*<script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>*@
-        
-        @*Scroll Reveal*@
-        <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
-        <script src="~/lib/MDB Free/js/SRPlay.js"></script>
-        @*<script src="~/lib/MDB Free/js/moPlay.js"></script>*@
+    @*MoJS*@
+    @*<script src="http://cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>*@
 
-        @*Custom JS*@
-        <script src="~/lib/MDB Free/js/site.js"></script>
+    @*Scroll Reveal*@
+    <script src="~/lib/MDB Free/js/scrollreveal.min.js"></script>
+    <script src="~/lib/MDB Free/js/SRPlay.js"></script>
+    @*<script src="~/lib/MDB Free/js/moPlay.js"></script>*@
 
-        @RenderSection("Scripts", required: false)
+    @*Custom JS*@
+    <script src="~/lib/MDB Free/js/site.js"></script>
+    <script src="~/lib/MDB Free/js/mdb.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
